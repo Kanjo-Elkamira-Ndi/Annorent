@@ -87,7 +87,7 @@ just the code layer:
 
 | Section | Status |
 |---|---|
-| Home `/` — hero + search card + trust row | **Built** from Stitch screen `53edc501418847e6ba5066b915f3b3da` ("Home - Annorent Marketplace"). The rest of the home page below the trust row is still the documented stub. |
+| Home `/` | **Built** from Stitch screen `53edc501418847e6ba5066b915f3b3da` ("Home - Annorent Marketplace") — hero + search card, trust row, neighborhood map band, the three listing grids (properties / rentals / hotels), and the owner CTA. The header, footer, and everything below the CTA are not built yet. |
 | Public/marketing (remaining routes above) | Fully prompted in `annorent-stitch-prompts.md` |
 | Auth: login, register, register/owner, register/hotel | Designed |
 | Auth: forgot-password, reset-password, verify-email | **Not yet designed** — not covered by any Stitch prompt |

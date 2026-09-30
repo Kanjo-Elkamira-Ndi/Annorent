@@ -44,6 +44,8 @@ working in.
 | What routes exist and who can see them, and what's designed vs. not yet? | `sitemap.md` |
 | Where do the brand colour/type tokens live, and how do I add one? | `src/app/[locale]/globals.css` — the `@theme` block |
 | Where does the home hero live? | `src/components/marketing/hero.tsx` (server), `search-bar.tsx` (the one client island), `trust-metrics.tsx` |
+| Where does the rest of the home page live? | `map-band.tsx`, `listing-grid-section.tsx` (header + grid), `listing-card.tsx` (shared card), `owner-cta.tsx` |
+| Where does the home page's listing content come from? | `src/lib/marketing-data.ts` — static typed data ported from the Stitch reference |
 
 ## Read order for a new developer or a fresh opencode session
 

@@ -28,6 +28,12 @@ annorent-web/
 │   ├── logo-wordmark.svg
 │   ├── favicon.ico
 │   ├── hero-bg.jpg                    # Home hero photographic background
+│   ├── images/
+│   │   └── listings/                  # Home listing/map imagery, self-hosted
+│   │       ├── map-abidjan.png
+│   │       ├── properties-01..03.jpg
+│   │       ├── rentals-01..03.jpg
+│   │       └── hotels-01..03.jpg
 │   └── fonts/
 │       └── material-symbols-outlined.woff2   # Self-hosted icon font (see §3 perf note)
 ├── scripts/
@@ -151,10 +157,15 @@ annorent-web/
 │   ├── components/
 │   │   ├── providers.tsx
 │   │   ├── marketing/
-│   │   │   ├── hero.tsx
-│   │   │   ├── search-bar.tsx
+│   │   │   ├── hero.tsx                  # Home hero (server)
+│   │   │   ├── search-bar.tsx            # Hero search card — the one client island
+│   │   │   ├── trust-metrics.tsx         # Trust row under the hero (server)
+│   │   │   ├── map-band.tsx              # "Explore by neighborhood" dark band (server)
+│   │   │   ├── listing-card.tsx          # Shared listing card, all three variants
+│   │   │   ├── listing-grid-section.tsx  # Section header + 3-col grid wrapper
+│   │   │   ├── owner-cta.tsx             # Closing owner/institutional CTA (server)
+│   │   │   ├── document-lang-sync.tsx    # Mirrors locale lang/dir onto <html>
 │   │   │   ├── featured-listing-card.tsx
-│   │   │   ├── trust-bar.tsx
 │   │   │   └── site-footer.tsx
 │   │   ├── auth/
 │   │   │   ├── login-form.tsx
@@ -254,6 +265,7 @@ annorent-web/
 │   │   └── utils/
 │   │       ├── cn.ts
 │   │       └── format.ts
+│   ├── marketing-data.ts              # Static home listing content (see §3 note)
 │   ├── server/
 │   │   ├── session.ts
 │   │   ├── locale.ts
@@ -389,6 +401,23 @@ content — requires something valid in them:
   not in that list. `globals.css` (Tailwind entry + `@theme` brand tokens, see
   `ui-context.md`) lives under `[locale]/` since it's loaded by that layout.
   Keep both to the minimum needed to boot — never actual page content.
+- **Only one layout may own `<html>`, so the root shell does.** The root
+  layout sits *above* `[locale]` and is handed `params = {}` (verified on Next
+  16.3.6, not assumed), so it cannot know the active locale. `lang`/`dir` are
+  therefore set on a wrapper element in `[locale]/layout.tsx`, and
+  `DocumentLangSync` mirrors them onto `<html>` on mount. Without that mirror,
+  `<html lang>` is stuck on `en` for every locale, which misleads screen-reader
+  pronunciation and search engines.
+- **A `next/font` variable must go on the element that wraps the content.**
+  CSS custom properties inherit downward, so declaring `--font-inter` on a
+  sibling or empty child element leaves every type token in `@theme` resolving
+  to its fallback stack. It belongs on the same wrapper as the page content.
+- **`src/lib/marketing-data.ts` holds static home content** — the listing and
+  map copy ported from the Stitch reference. It is a plain typed data module,
+  not an API client, so the marketing surface renders without the backend.
+  The shapes mirror the API response so swapping in a fetch stays a change to
+  this one file. Listing imagery is self-hosted under `public/images/listings/`
+  rather than hotlinked from the design tool's CDN.
 - **Every other Next.js special file** (`page.tsx`, `layout.tsx` elsewhere,
   `route.ts`, `error.tsx`, `not-found.tsx`, `proxy.ts`) needs a minimal
   valid stub — a bare default export or handler, nothing else — because Next's

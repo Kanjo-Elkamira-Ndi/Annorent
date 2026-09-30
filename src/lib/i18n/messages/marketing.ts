@@ -41,6 +41,37 @@ export const marketing = {
     "home.trust.support.title": "24/7 Support",
     "home.trust.support.body":
       "Dedicated bilingual concierge & property management",
+
+    "home.map.pill": "Live Mapping & Digital Land Registry",
+    "home.map.title": "Explore opportunities by neighborhood in real time",
+    "home.map.body":
+      "Filter districts by security index, fiber connectivity, proximity to international schools, and gross rental yield.",
+    "home.map.statVerified": "Verified geolocated properties",
+    "home.map.statCadastral": "Cadastral precision",
+    "home.map.explore": "Explore on map",
+    "home.map.zone": "Investment Zone",
+
+    "home.properties.title": "Exceptional Real Estate Properties",
+    "home.properties.body":
+      "Luxury properties with notarized guarantees and immersive 3D virtual tours.",
+    "home.properties.linkAll": "View all 480 villas & apartments",
+
+    "home.rentals.title": "Flexible Rentals & Workspaces",
+    "home.rentals.body":
+      "Turnkey private offices, open-plan workspaces, and conference rooms with guaranteed fiber connectivity.",
+    "home.rentals.linkAll": "View all 190 hubs & offices",
+
+    "home.hotels.title": "Hotels & Hotel Residences",
+    "home.hotels.body":
+      "Prestige suites, private concierge, and instant availability with no hidden fees.",
+    "home.hotels.linkAll": "View all 120 hotels & suites",
+
+    "home.cta.pill": "Annorent Institutional Security",
+    "home.cta.title": "Are you an owner of a prestige property or hotel complex?",
+    "home.cta.body":
+      "Benefit from complimentary 3D digitization by our technical teams, rigorous tenant financial screening, and our certified escrow account.",
+    "home.cta.listProperty": "List Your Property",
+    "home.cta.investorPortal": "Investor Portal",
   },
   fr: {
     "home.hero.badge":
@@ -77,6 +108,37 @@ export const marketing = {
     "home.trust.support.title": "Assistance 24/7",
     "home.trust.support.body":
       "Conciergerie bilingue dédiée & gestion locative",
+
+    "home.map.pill": "Cartographie en direct & Registre foncier numérique",
+    "home.map.title": "Explorez les opportunités quartier par quartier en temps réel",
+    "home.map.body":
+      "Filtrez les quartiers par indice de sécurité, connectivité fibre, proximité des écoles internationales et rendement locatif brut.",
+    "home.map.statVerified": "Propriétés géolocalisées vérifiées",
+    "home.map.statCadastral": "Précision cadastrale",
+    "home.map.explore": "Explorer sur la carte",
+    "home.map.zone": "Zone d'investissement",
+
+    "home.properties.title": "Propriétés immobilières d'exception",
+    "home.properties.body":
+      "Propriétés de luxe avec garanties notariées et visites virtuelles 3D immersives.",
+    "home.properties.linkAll": "Voir les 480 villas & appartements",
+
+    "home.rentals.title": "Locations flexibles & espaces de travail",
+    "home.rentals.body":
+      "Bureaux privés clé en main, espaces ouverts et salles de conférence avec connectivité fibre garantie.",
+    "home.rentals.linkAll": "Voir les 190 espaces & bureaux",
+
+    "home.hotels.title": "Hôtels & résidences hôtelières",
+    "home.hotels.body":
+      "Suites prestige, conciergerie privée et disponibilité immédiate sans frais cachés.",
+    "home.hotels.linkAll": "Voir les 120 hôtels & suites",
+
+    "home.cta.pill": "Sécurité institutionnelle Annorent",
+    "home.cta.title": "Vous êtes propriétaire d'un bien de prestige ou d'un complexe hôtelier ?",
+    "home.cta.body":
+      "Bénéficiez d'une numérisation 3D offerte par nos équipes techniques, d'une sélection rigoureuse des locataires et de notre compte séquestre certifié.",
+    "home.cta.listProperty": "Publier votre bien",
+    "home.cta.investorPortal": "Portail investisseurs",
   },
 } as const;
 
