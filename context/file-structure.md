@@ -174,12 +174,17 @@ annorent-web/
 │   │   │   ├── search-result-card.tsx    # /properties result card
 │   │   │   ├── sort-select.tsx           # Shared "Sort by :" native select
 │   │   │   ├── workspace-card.tsx        # /rentals workspace card
-│   │   │   └── hotel-card.tsx            # /hotels hotel card
+│   │   │   ├── hotel-card.tsx            # /hotels hotel card
+│   │   │   └── map/
+│   │   │       ├── abidjan-map.tsx       # Stylised Abidjan vector map (server) — zoom scales the viewBox
+│   │   │       └── map-discovery.tsx     # /map: the one client island (filters, pins, popup, zoom)
 │   │   ├── auth/
-│   │   │   ├── login-form.tsx
-│   │   │   ├── register-form.tsx
-│   │   │   ├── business-register-form.tsx
-│   │   │   └── step-indicator.tsx
+│   │   │   ├── auth-shell.tsx            # Split-screen shell: form card + trust panel (server)
+│   │   │   ├── auth-tabs.tsx             # Sign In / Create Account / Pro & Hospitality links
+│   │   │   ├── auth-fields.tsx           # Shared labelled inputs: text, phone, password, select
+│   │   │   ├── identity-form.tsx         # /login + /register form, account-type switch
+│   │   │   ├── business-register-form.tsx# /register/owner + /register/hotel, shared body
+│   │   │   └── recovery-forms.tsx        # forgot-password / reset-password / verify-email
 │   │   ├── account/
 │   │   │   ├── booking-card.tsx
 │   │   │   ├── appointment-list.tsx
@@ -249,7 +254,8 @@ annorent-web/
 │   │   │   ├── index.ts
 │   │   │   └── messages/
 │   │   │       ├── common.ts
-│   │   │       ├── marketing.ts
+│   │   │       ├── auth.ts                # Sign-in / registration / recovery copy
+│   │   │       ├── marketing.ts           # Home, /properties, /rentals, /hotels, /map
 │   │   │       ├── account.ts
 │   │   │       ├── owner.ts
 │   │   │       ├── hotel.ts
@@ -279,7 +285,8 @@ annorent-web/
 │   │   ├── property-search.ts       # /properties results, filter groups, pagination
 │   │   ├── property-details.ts      # /properties/[id] gallery, amenities, pricing
 │   │   ├── rentals.ts               # /rentals workspace cards, categories, billing
-│   │   └── hotels.ts                # /hotels cards, destinations, quick filters
+│   │   ├── hotels.ts                # /hotels cards, destinations, quick filters
+│   │   └── map.ts                   # /map listings, pins, clusters, rent bounds, inert list
 │   ├── server/
 │   │   ├── session.ts
 │   │   ├── locale.ts

@@ -1,0 +1,218 @@
+/**
+ * Authentication surface copy.
+ *
+ * Covers the four Stitch-designed auth modes (sign in, register, owner,
+ * hotel) plus the three recovery routes, which have no Stitch design and are
+ * derived from the same visual language — see `context/sitemap.md`.
+ *
+ * English and French only so far. Portuguese, Arabic, and Swahili are required
+ * by `context/ui-context.md` (F11) and are added as the remaining locales land.
+ * `t()` falls back to English per key, so a missing translation degrades to
+ * readable copy rather than a raw key.
+ *
+ * The key table is flat (`auth.*`) rather than nested to match `marketing.ts`,
+ * so the two namespaces resolve identically through `t()`.
+ */
+
+export const auth = {
+  en: {
+    "auth.tabs.label": "Account mode",
+    "auth.tab.signin": "Sign In",
+    "auth.tab.register": "Create Account",
+    "auth.tab.business": "Pro & Hospitality",
+
+    "auth.step.progressLabel": "Registration progress",
+    "auth.step.identity": "Identity & Contact",
+    "auth.step.role": "Landlord / Host",
+    "auth.step.verification": "Verification",
+
+    "auth.brand.kicker": "Premium Real Estate",
+    "auth.brand.badge": "Certified Network",
+
+    "auth.trust.backgroundAlt":
+      "Contemporary Abidjan villa at dusk, used as the authentication trust-panel backdrop",
+    "auth.trust.network": "African Notarial Network",
+    "auth.trust.vr": "3D VR Tour",
+    "auth.trust.quote":
+      "The premier certified platform guaranteeing the authenticity of land title deeds and the security of every property transaction in West and Central Africa.",
+    "auth.trust.author": "Kouamé N'Guessan",
+    "auth.trust.authorRole": "Institutional Investor • Abidjan & Dakar",
+    "auth.trust.point1": "100% verified by certified UINL notaries",
+    "auth.trust.point2": "Regulated escrow accounts (BCEAO & BEAC)",
+    "auth.trust.point3": "24/7 legal & concierge assistance",
+    "auth.trust.cities": "Dakar • Abidjan • Douala • Lomé",
+    "auth.trust.protocol": "Annorent Trust™ Protocol",
+
+    "auth.form.identifierLabel": "Email address or phone number",
+    "auth.form.nameLabel": "Full name",
+    "auth.form.namePlaceholder": "e.g., Aya Koné",
+    "auth.form.hotelNameLabel": "Hotel establishment",
+    "auth.form.ownerNameLabel": "Full name or company",
+    "auth.form.businessPlaceholder": "e.g., Palm Residence",
+    "auth.form.contactLabel": "Phone number or business email",
+    "auth.form.contactPlaceholder": "07 00 00 00 00 or email@domain.com",
+    "auth.form.dialCodeLabel": "Country dialling code",
+    "auth.form.passwordLabel": "Secure password",
+    "auth.form.newPasswordPlaceholder": "At least 8 characters",
+    "auth.form.confirmPlaceholder": "Repeat your new password",
+    "auth.form.rememberMe": "Remember me",
+    "auth.form.ssl": "256-bit SSL",
+    "auth.form.forgotPassword": "Forgot password?",
+    "auth.form.submitSignIn": "Sign In Securely",
+    "auth.form.submitRegister": "Create My Account",
+    "auth.form.submitBusiness": "Submit Pro Application",
+    "auth.form.submitting": "Please wait",
+    "auth.form.orContinue": "Or continue with",
+    "auth.form.google": "Google",
+    "auth.form.mobileMoney": "Mobile Money ID",
+    "auth.form.alreadyRegistered": "Already have an account?",
+    "auth.form.signedInTitle": "Welcome back",
+    "auth.form.signedInBody": "Authentication is not connected yet — this confirmation is local to the browser.",
+    "auth.form.checkEmailTitle": "Verify your email address",
+    "auth.form.checkEmailBody": "We sent a confirmation link. Open it to activate your Annorent account.",
+    "auth.form.submittedTitle": "Application received",
+    "auth.form.submittedBody": "Our onboarding team reviews professional accounts before publication.",
+    "auth.form.strengthWeak": "Weak — use 8 or more characters",
+    "auth.form.strengthFair": "Fair — add length or a mix of characters",
+    "auth.form.strengthGood": "Strong password",
+    "auth.form.showPassword": "Show password",
+    "auth.form.hidePassword": "Hide password",
+
+    "auth.form.accountTypeLabel": "Account type",
+    "auth.form.accountTypeOwner": "Landlord / Owner",
+    "auth.form.accountTypeHotel": "Hotel / Hospitality",
+    "auth.form.portfolioLabel": "Portfolio",
+    "auth.form.termsPrefix": "I accept the",
+    "auth.form.termsLink": "Terms of Service",
+    "auth.form.privacyPrefix": "and the",
+    "auth.form.privacyLink": "Privacy Policy",
+    "auth.form.createAnother": "create another account",
+
+    "auth.recover.intro":
+      "Enter the email address or phone number on your Annorent account and we will send a secure reset link.",
+    "auth.recover.contactLabel": "Email address or phone number",
+    "auth.recover.submit": "Send Secure Reset Link",
+    "auth.recover.remembered": "Remembered your password?",
+    "auth.recover.sentTitle": "Check your inbox",
+    "auth.recover.sentBody": "If that account exists, a reset link is on its way. The link expires in 30 minutes.",
+    "auth.recover.useAnother": "Use a different address",
+    "auth.recover.tokenLabel": "Reset token",
+    "auth.recover.tokenHint": "Read from the link in your email. Not validated without an auth backend.",
+    "auth.recover.tokenMissing": "No reset token in the URL. Open the link from your email to continue.",
+    "auth.recover.newPasswordLabel": "New password",
+    "auth.recover.confirmLabel": "Confirm new password",
+    "auth.recover.mismatch": "Passwords do not match",
+    "auth.recover.resetHint": "Use at least 8 characters, and both entries must match.",
+    "auth.recover.resetSubmit": "Update Password",
+    "auth.recover.resetDoneTitle": "Password updated",
+    "auth.recover.resetDoneBody": "Sign in with your new password.",
+
+    "auth.verify.title": "Verify your email address",
+    "auth.verify.body": "We sent a verification link. Open it to confirm ownership and unlock escrow bookings.",
+    "auth.verify.resend": "Resend verification email",
+    "auth.verify.resent": "Verification email sent again.",
+    "auth.verify.wrongAddress": "Wrong address?",
+  },
+  fr: {
+    "auth.tabs.label": "Mode de compte",
+    "auth.tab.signin": "Se Connecter",
+    "auth.tab.register": "Créer un Compte",
+    "auth.tab.business": "Pro & Hôtelier",
+
+    "auth.step.progressLabel": "Progression de l'inscription",
+    "auth.step.identity": "Identité & Contact",
+    "auth.step.role": "Propriétaire / Hôte",
+    "auth.step.verification": "Vérification",
+
+    "auth.brand.kicker": "Immobilier Premium",
+    "auth.brand.badge": "Réseau Certifié",
+
+    "auth.trust.backgroundAlt":
+      "Villa abidjanaise contemporaine au crépuscule, utilisée comme fond du panneau de confiance",
+    "auth.trust.network": "Réseau Notarial Africain",
+    "auth.trust.vr": "Visite 3D VR",
+    "auth.trust.quote":
+      "La plateforme certifiée de référence, garantissant l'authenticité des titres fonciers et la sécurité de chaque transaction immobilière en Afrique de l'Ouest et Centrale.",
+    "auth.trust.author": "Kouamé N'Guessan",
+    "auth.trust.authorRole": "Investisseur institutionnel • Abidjan & Dakar",
+    "auth.trust.point1": "100% vérifié par des notaires UINL certifiés",
+    "auth.trust.point2": "Comptes séquestres réglementés (BCEAO & BEAC)",
+    "auth.trust.point3": "Assistance juridique & conciergerie 24h/24, 7j/7",
+    "auth.trust.cities": "Dakar • Abidjan • Douala • Lomé",
+    "auth.trust.protocol": "Annorent Trust™ Protocol",
+
+    "auth.form.identifierLabel": "Adresse e-mail ou numéro de téléphone",
+    "auth.form.nameLabel": "Nom complet",
+    "auth.form.namePlaceholder": "ex. Aya Koné",
+    "auth.form.hotelNameLabel": "Établissement hôtelier",
+    "auth.form.ownerNameLabel": "Nom complet ou société",
+    "auth.form.businessPlaceholder": "ex. Palm Residence",
+    "auth.form.contactLabel": "Numéro de téléphone ou e-mail professionnel",
+    "auth.form.contactPlaceholder": "07 00 00 00 00 ou email@domaine.com",
+    "auth.form.dialCodeLabel": "Indicatif pays",
+    "auth.form.passwordLabel": "Mot de passe sécurisé",
+    "auth.form.newPasswordPlaceholder": "8 caractères minimum",
+    "auth.form.confirmPlaceholder": "Répétez votre nouveau mot de passe",
+    "auth.form.rememberMe": "Mémoriser ma session",
+    "auth.form.ssl": "SSL 256 bits",
+    "auth.form.forgotPassword": "Mot de passe oublié ?",
+    "auth.form.submitSignIn": "Se Connecter en Sécurité",
+    "auth.form.submitRegister": "Créer Mon Compte",
+    "auth.form.submitBusiness": "Envoyer Ma Candidature Pro",
+    "auth.form.submitting": "Veuillez patienter",
+    "auth.form.orContinue": "Ou continuer avec",
+    "auth.form.google": "Google",
+    "auth.form.mobileMoney": "Mobile Money ID",
+    "auth.form.alreadyRegistered": "Vous avez déjà un compte ?",
+    "auth.form.signedInTitle": "Bon retour parmi nous",
+    "auth.form.signedInBody":
+      "L'authentification n'est pas encore connectée — cette confirmation est locale au navigateur.",
+    "auth.form.checkEmailTitle": "Vérifiez votre adresse e-mail",
+    "auth.form.checkEmailBody": "Nous avons envoyé un lien de confirmation. Ouvrez-le pour activer votre compte.",
+    "auth.form.submittedTitle": "Candidature reçue",
+    "auth.form.submittedBody": "Notre équipe examine les comptes professionnels avant publication.",
+    "auth.form.strengthWeak": "Faible — utilisez au moins 8 caractères",
+    "auth.form.strengthFair": "Correct — allongez ou variez les caractères",
+    "auth.form.strengthGood": "Mot de passe solide",
+    "auth.form.showPassword": "Afficher le mot de passe",
+    "auth.form.hidePassword": "Masquer le mot de passe",
+
+    "auth.form.accountTypeLabel": "Type de compte",
+    "auth.form.accountTypeOwner": "Propriétaire / Locateur",
+    "auth.form.accountTypeHotel": "Hôtel / Hôtellerie",
+    "auth.form.portfolioLabel": "Portefeuille",
+    "auth.form.termsPrefix": "J'accepte les",
+    "auth.form.termsLink": "Conditions Générales",
+    "auth.form.privacyPrefix": "et la",
+    "auth.form.privacyLink": "Politique de Confidentialité",
+    "auth.form.createAnother": "créer un autre compte",
+
+    "auth.recover.intro":
+      "Saisissez l'adresse e-mail ou le numéro associé à votre compte Annorent : nous enverrons un lien de réinitialisation sécurisé.",
+    "auth.recover.contactLabel": "Adresse e-mail ou numéro de téléphone",
+    "auth.recover.submit": "Envoyer le Lien Sécurisé",
+    "auth.recover.remembered": "Mot de passe retrouvé ?",
+    "auth.recover.sentTitle": "Consultez votre boîte mail",
+    "auth.recover.sentBody": "Si ce compte existe, un lien vient d'être envoyé. Il expire dans 30 minutes.",
+    "auth.recover.useAnother": "Utiliser une autre adresse",
+    "auth.recover.tokenLabel": "Jeton de réinitialisation",
+    "auth.recover.tokenHint": "Lu depuis le lien de votre e-mail. Non validé sans backend d'authentification.",
+    "auth.recover.tokenMissing": "Aucun jeton dans l'URL. Ouvrez le lien reçu par e-mail pour continuer.",
+    "auth.recover.newPasswordLabel": "Nouveau mot de passe",
+    "auth.recover.confirmLabel": "Confirmer le nouveau mot de passe",
+    "auth.recover.mismatch": "Les mots de passe ne correspondent pas",
+    "auth.recover.resetHint": "Utilisez au moins 8 caractères, et les deux saisies doivent correspondre.",
+    "auth.recover.resetSubmit": "Mettre à Jour le Mot de Passe",
+    "auth.recover.resetDoneTitle": "Mot de passe mis à jour",
+    "auth.recover.resetDoneBody": "Connectez-vous avec votre nouveau mot de passe.",
+
+    "auth.verify.title": "Vérifiez votre adresse e-mail",
+    "auth.verify.body":
+      "Nous avons envoyé un lien de vérification. Ouvrez-le pour confirmer la propriété et débloquer les réservations sous séquestre.",
+    "auth.verify.resend": "Renvoyer l'e-mail de vérification",
+    "auth.verify.resent": "E-mail de vérification renvoyé.",
+    "auth.verify.wrongAddress": "Mauvaise adresse ?",
+  },
+};
+
+export type AuthKey = keyof (typeof auth)["en"];

@@ -10,6 +10,7 @@
  * because it is a real module rather than a re-export shim.
  */
 
+import { auth, type AuthKey } from "./messages/auth";
 import { marketing, type MarketingKey } from "./messages/marketing";
 
 export const locales = ["en", "fr", "pt", "ar", "sw"] as const;
@@ -53,6 +54,7 @@ type MessageTable = Record<string, string>;
 type PartialLocaleMessages = { [K in Locale]?: MessageTable };
 
 const messages = {
+  auth: auth as unknown as PartialLocaleMessages,
   marketing: marketing as unknown as PartialLocaleMessages,
 } satisfies Record<string, PartialLocaleMessages>;
 
@@ -69,4 +71,4 @@ export function t(locale: Locale, namespace: Namespace, key: string): string {
   );
 }
 
-export type { MarketingKey };
+export type { AuthKey, MarketingKey };
