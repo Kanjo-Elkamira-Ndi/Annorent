@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { t, type Locale } from "@/lib/i18n";
-import type { ListingSection } from "@/lib/marketing-data";
+import type { ListingSection } from "@/lib/marketing/home";
 
 import { ListingCard } from "./listing-card";
 

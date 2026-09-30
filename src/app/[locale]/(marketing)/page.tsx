@@ -10,7 +10,7 @@ import {
   HOTEL_SECTION,
   PROPERTY_SECTION,
   RENTAL_SECTION,
-} from "@/lib/marketing-data";
+} from "@/lib/marketing/home";
 
 /**
  * Home page.

@@ -167,7 +167,14 @@ annorent-web/
 │   │   │   ├── document-lang-sync.tsx    # Mirrors locale lang/dir onto <html>
 │   │   │   ├── site-footer.tsx           # Public link grid + legal bar
 │   │   │   ├── featured-listing-card.tsx
-│   │   │   └── site-footer.tsx
+│   │   │   ├── active-filter-chips.tsx   # Dismissible "Active filters" strip
+│   │   │   ├── assurance-strip.tsx       # shield/verified callout row (2 variants)
+│   │   │   ├── filter-panel.tsx          # Sticky /properties filter sidebar
+│   │   │   ├── pagination.tsx            # "Showing 1-6 of 248" + page links
+│   │   │   ├── search-result-card.tsx    # /properties result card
+│   │   │   ├── sort-select.tsx           # Shared "Sort by :" native select
+│   │   │   ├── workspace-card.tsx        # /rentals workspace card
+│   │   │   └── hotel-card.tsx            # /hotels hotel card
 │   │   ├── auth/
 │   │   │   ├── login-form.tsx
 │   │   │   ├── register-form.tsx
@@ -266,7 +273,13 @@ annorent-web/
 │   │   └── utils/
 │   │       ├── cn.ts
 │   │       └── format.ts
-│   ├── marketing-data.ts              # Static home listing content (see §3 note)
+│   ├── marketing/                   # Static public-site content, one file per page
+│   │   ├── types.ts                 # Shapes shared across the browse pages
+│   │   ├── home.ts                  # Home listing + map-band content
+│   │   ├── property-search.ts       # /properties results, filter groups, pagination
+│   │   ├── property-details.ts      # /properties/[id] gallery, amenities, pricing
+│   │   ├── rentals.ts               # /rentals workspace cards, categories, billing
+│   │   └── hotels.ts                # /hotels cards, destinations, quick filters
 │   ├── server/
 │   │   ├── session.ts
 │   │   ├── locale.ts
@@ -413,21 +426,35 @@ content — requires something valid in them:
   CSS custom properties inherit downward, so declaring `--font-inter` on a
   sibling or empty child element leaves every type token in `@theme` resolving
   to its fallback stack. It belongs on the same wrapper as the page content.
-- **A `fixed` site header needs a matching offset pair, or it overlaps the
-  page.** `site-header.tsx` is `fixed top-0` and `h-20`, so it is out of flow.
-  Stitch reserves its height on the page wrapper with `pt-20` and then pulls the
-  first section back up with `-mt-20`, which lets the hero photograph bleed to
-  the top of the viewport while every section below clears the bar. Both halves
-  are required — drop `pt-20` and the header sits on top of the first section;
-  drop `-mt-20` and the hero gets a phantom gap. The two values cancel exactly
-  because both are `calc(var(--spacing) * 20)` = 5rem, so they must stay in
-  step. Any new marketing page that renders the header needs the same pair.
-- **`src/lib/marketing-data.ts` holds static home content** — the listing and
-  map copy ported from the Stitch reference. It is a plain typed data module,
-  not an API client, so the marketing surface renders without the backend.
-  The shapes mirror the API response so swapping in a fetch stays a change to
-  this one file. Listing imagery is self-hosted under `public/images/listings/`
-  rather than hotlinked from the design tool's CDN.
+- **A `fixed` site header needs a matching offset, or it overlaps the page.**
+  `site-header.tsx` is `fixed top-0` and `h-20`, so it is out of flow. There are
+  two correct patterns, and picking the wrong one either overlaps the header or
+  opens a phantom gap.
+  - *Full-bleed hero* (Home only): the page wrapper takes `pt-20` and the hero
+    takes `-mt-20`. The values cancel exactly — both are
+    `calc(var(--spacing) * 20)` = 5rem — so the photograph bleeds to the top of
+    the viewport while the first section *below* it still clears the bar. Drop
+    `pt-20` and the header sits on top of the content; drop `-mt-20` and the
+    hero gets a 5rem gap under the header. They must stay in step.
+  - *Solid first section* (`/properties`, `/properties/[id]`, `/rentals`,
+    `/hotels`): the page wrapper takes `pt-20` **only**. There is no
+    `-mt-20`, because the first section is an opaque context/hero band that is
+    meant to start below the header, not slide underneath it. Applying the
+    Home pair here pulls the band up under the translucent header bar.
+  So: every marketing page needs `pt-20` on the wrapper; only a page whose
+  first section is artwork-bleeding adds `-mt-20` to that section.
+- **`src/lib/marketing/` holds static public-site content, one file per page.**
+  The listing and map copy ported from the Stitch reference live in
+  `home.ts`; `property-search.ts`, `property-details.ts`, `rentals.ts`, and
+  `hotels.ts` hold the browse-page content, and `types.ts` holds the shapes they
+  share. These are plain typed data modules, not API clients, so the marketing
+  surface renders without the backend. The shapes mirror the API response so
+  swapping in a fetch stays a change to these files. Imagery is self-hosted
+  under `public/images/listings/`, `public/images/search/`,
+  `public/images/details/`, `public/images/rentals/`, and
+  `public/images/hotels/` rather than hotlinked from the design tool's CDN.
+  There is deliberately no `src/lib/marketing/index.ts` barrel — see the
+  no-barrel rule above.
 - **Every other Next.js special file** (`page.tsx`, `layout.tsx` elsewhere,
   `route.ts`, `error.tsx`, `not-found.tsx`, `proxy.ts`) needs a minimal
   valid stub — a bare default export or handler, nothing else — because Next's

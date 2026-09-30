@@ -46,7 +46,13 @@ working in.
 | Where does the home hero live? | `src/components/marketing/hero.tsx` (server), `search-bar.tsx` (the one client island), `trust-metrics.tsx` |
 | Where does the site chrome live? | `src/components/layout/site-header.tsx` (fixed bar), `src/components/marketing/site-footer.tsx` (link grid + legal bar) |
 | Where does the rest of the home page live? | `map-band.tsx`, `listing-grid-section.tsx` (header + grid), `listing-card.tsx` (shared card), `owner-cta.tsx` |
-| Where does the home page's listing content come from? | `src/lib/marketing-data.ts` — static typed data ported from the Stitch reference |
+| Where does the home page's listing content come from? | `src/lib/marketing/home.ts` — static typed data ported from the Stitch reference |
+| Where does `/properties` live? | `src/app/[locale]/(marketing)/properties/page.tsx`, with `filter-panel.tsx`, `search-result-card.tsx`, `active-filter-chips.tsx`, `sort-select.tsx`, `pagination.tsx`, `assurance-strip.tsx` in `src/components/marketing/` |
+| Where does `/properties/[id]` live? | `src/app/[locale]/(marketing)/properties/[id]/page.tsx` — the gallery mosaic, spec row, amenity grid, legal certificate, and the sticky booking form are all inline in the page; there is no separate detail-page component yet |
+| Where does `/rentals` live? | `src/app/[locale]/(marketing)/rentals/page.tsx`, with `workspace-card.tsx`, `assurance-strip.tsx`, `pagination.tsx`, and `sort-select.tsx` |
+| Where does `/hotels` live? | `src/app/[locale]/(marketing)/hotels/page.tsx`, with `hotel-card.tsx`, `assurance-strip.tsx`, `pagination.tsx`, and `sort-select.tsx` |
+| Where does the browse-page content come from? | `src/lib/marketing/{property-search,property-details,rentals,hotels}.ts` — static typed data, one file per route, shapes in `types.ts`. No barrel file by project rule. |
+| How do I add a marketing page without overlapping the header? | `file-structure.md` → "A `fixed` site header needs a matching offset" — `pt-20` on the wrapper always; `-mt-20` on the first section **only** if that section is artwork-bleeding (Home). |
 
 ## Read order for a new developer or a fresh opencode session
 

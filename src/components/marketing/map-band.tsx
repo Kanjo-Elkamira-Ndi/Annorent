@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { t, type Locale } from "@/lib/i18n";
-import { MAP_BAND } from "@/lib/marketing-data";
+import { MAP_BAND } from "@/lib/marketing/home";
 import { cn } from "@/lib/utils/cn";
 
 /**

@@ -1,4 +1,4 @@
-import type { CardBadge, Listing } from "@/lib/marketing-data";
+import type { CardBadge, Listing } from "@/lib/marketing/home";
 import { cn } from "@/lib/utils/cn";
 
 /**
