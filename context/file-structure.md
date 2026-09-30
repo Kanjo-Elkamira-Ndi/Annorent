@@ -165,6 +165,7 @@ annorent-web/
 │   │   │   ├── listing-grid-section.tsx  # Section header + 3-col grid wrapper
 │   │   │   ├── owner-cta.tsx             # Closing owner/institutional CTA (server)
 │   │   │   ├── document-lang-sync.tsx    # Mirrors locale lang/dir onto <html>
+│   │   │   ├── site-footer.tsx           # Public link grid + legal bar
 │   │   │   ├── featured-listing-card.tsx
 │   │   │   └── site-footer.tsx
 │   │   ├── auth/
@@ -209,7 +210,7 @@ annorent-web/
 │   │   ├── layout/
 │   │   │   ├── app-shell.tsx
 │   │   │   ├── role-sidebar.tsx
-│   │   │   ├── site-header.tsx
+│   │   │   ├── site-header.tsx            # Fixed public header (marketing pages)
 │   │   │   └── locale-switcher.tsx
 │   │   └── ui/
 │   │       ├── button.tsx
@@ -412,6 +413,15 @@ content — requires something valid in them:
   CSS custom properties inherit downward, so declaring `--font-inter` on a
   sibling or empty child element leaves every type token in `@theme` resolving
   to its fallback stack. It belongs on the same wrapper as the page content.
+- **A `fixed` site header needs a matching offset pair, or it overlaps the
+  page.** `site-header.tsx` is `fixed top-0` and `h-20`, so it is out of flow.
+  Stitch reserves its height on the page wrapper with `pt-20` and then pulls the
+  first section back up with `-mt-20`, which lets the hero photograph bleed to
+  the top of the viewport while every section below clears the bar. Both halves
+  are required — drop `pt-20` and the header sits on top of the first section;
+  drop `-mt-20` and the hero gets a phantom gap. The two values cancel exactly
+  because both are `calc(var(--spacing) * 20)` = 5rem, so they must stay in
+  step. Any new marketing page that renders the header needs the same pair.
 - **`src/lib/marketing-data.ts` holds static home content** — the listing and
   map copy ported from the Stitch reference. It is a plain typed data module,
   not an API client, so the marketing surface renders without the backend.

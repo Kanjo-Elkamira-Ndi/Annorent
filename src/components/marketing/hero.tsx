@@ -6,12 +6,14 @@ import { SearchBar } from "./search-bar";
  *
  * Owns: the photographic background, its contrast vignette, and the copy
  * stack. Does not own: the search interaction (`search-bar.tsx` is the client
- * island) or the trust row (`trust-metrics.tsx`).
+ * island), the trust row (`trust-metrics.tsx`), or the page chrome
+ * (`site-header.tsx` / `site-footer.tsx`).
  *
- * Ported from the Stitch "Home - Annorent Marketplace" screen. One deliberate
- * deviation: Stitch's hero carries `-mt-20` to sit under a fixed site header,
- * which this project does not have yet, so the offset is dropped and the
- * original `pt-24 lg:pt-32` rhythm is preserved.
+ * Ported from the Stitch "Home - Annorent Marketplace" screen, including its
+ * `-mt-20`: the site header is `fixed`, so the page's `<main>` reserves the
+ * bar's height with `pt-20` and the hero pulls back up to sit beneath it,
+ * letting the photograph bleed to the top of the viewport. Drop either half of
+ * that pair and the header overlaps the hero.
  */
 
 type HeroProps = {
@@ -24,7 +26,7 @@ export function Hero({ locale, className }: HeroProps) {
     <section
       aria-labelledby="hero-title"
       className={[
-        "relative w-full overflow-hidden pb-20 pt-24 lg:pb-28 lg:pt-32",
+        "relative w-full overflow-hidden -mt-20 pb-20 pt-24 lg:pb-28 lg:pt-32",
         className ?? "",
       ]
         .filter(Boolean)
