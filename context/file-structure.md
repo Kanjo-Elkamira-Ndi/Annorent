@@ -10,7 +10,7 @@
 ## 1. Complete file tree
 
 ```
-annorent/
+annorent-web/
 ├── context/
 │   ├── project-overview.md
 │   ├── ui-context.md
@@ -26,7 +26,10 @@ annorent/
 ├── public/
 │   ├── logo-mark.svg
 │   ├── logo-wordmark.svg
-│   └── favicon.ico
+│   ├── favicon.ico
+│   ├── hero-bg.jpg                    # Home hero photographic background
+│   └── fonts/
+│       └── material-symbols-outlined.woff2   # Self-hosted icon font (see §3 perf note)
 ├── scripts/
 │   └── generate-api-types.mjs
 ├── e2e/
@@ -35,109 +38,110 @@ annorent/
 │   ├── owner-listing.spec.ts
 │   └── admin-verification.spec.ts
 ├── src/
-│   ├── middleware.ts
+│   ├── proxy.ts
 │   ├── app/
-│   │   ├── layout.tsx
-│   │   ├── globals.css
-│   │   ├── error.tsx
-│   │   ├── not-found.tsx
+│   │   ├── layout.tsx                  # Minimal root shell — html/body only, no providers (§3)
+│   │   ├── not-found.tsx               # Catch-all for paths outside any locale segment
 │   │   ├── robots.ts
 │   │   ├── sitemap.ts
-│   │   ├── opengraph-image.png
-│   │   ├── opengraph-image.alt.txt
-│   │   ├── icon.svg
-│   │   ├── (marketing)/
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   │   ├── properties/
+│   │   ├── favicon.ico
+│   │   ├── [locale]/
+│   │   │   ├── layout.tsx              # Real root layout: fonts, providers, generateStaticParams
+│   │   │   ├── globals.css
+│   │   │   ├── error.tsx
+│   │   │   ├── not-found.tsx           # Locale-aware 404 (translated copy)
+│   │   │   ├── (marketing)/
+│   │   │   │   ├── layout.tsx
 │   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/page.tsx
-│   │   │   ├── rentals/
+│   │   │   │   ├── properties/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [id]/page.tsx
+│   │   │   │   ├── rentals/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [id]/page.tsx
+│   │   │   │   ├── hotels/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [id]/page.tsx
+│   │   │   │   ├── map/page.tsx
+│   │   │   │   ├── partners/page.tsx
+│   │   │   │   ├── about/page.tsx
+│   │   │   │   ├── contact/page.tsx
+│   │   │   │   └── legal/
+│   │   │   │       ├── terms/page.tsx
+│   │   │   │       └── privacy/page.tsx
+│   │   │   ├── (auth)/
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── login/page.tsx
+│   │   │   │   ├── register/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── owner/page.tsx
+│   │   │   │   │   └── hotel/page.tsx
+│   │   │   │   ├── forgot-password/page.tsx
+│   │   │   │   ├── reset-password/page.tsx
+│   │   │   │   └── verify-email/page.tsx
+│   │   │   ├── account/
+│   │   │   │   ├── layout.tsx
 │   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/page.tsx
-│   │   │   ├── hotels/
+│   │   │   │   ├── bookings/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [id]/page.tsx
+│   │   │   │   ├── appointments/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [id]/page.tsx
+│   │   │   │   ├── messages/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [conversationId]/page.tsx
+│   │   │   │   ├── payments/page.tsx
+│   │   │   │   ├── saved/page.tsx
+│   │   │   │   ├── notifications/page.tsx
+│   │   │   │   └── profile/page.tsx
+│   │   │   ├── owner/
+│   │   │   │   ├── layout.tsx
 │   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/page.tsx
-│   │   │   ├── map/page.tsx
-│   │   │   ├── partners/page.tsx
-│   │   │   ├── about/page.tsx
-│   │   │   ├── contact/page.tsx
-│   │   │   └── legal/
-│   │   │       ├── terms/page.tsx
-│   │   │       └── privacy/page.tsx
-│   │   ├── (auth)/
-│   │   │   ├── layout.tsx
-│   │   │   ├── login/page.tsx
-│   │   │   ├── register/
+│   │   │   │   ├── properties/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── new/page.tsx
+│   │   │   │   │   └── [id]/edit/page.tsx
+│   │   │   │   ├── rentals/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── new/page.tsx
+│   │   │   │   │   └── [id]/
+│   │   │   │   │       ├── availability/page.tsx
+│   │   │   │   │       └── pricing/page.tsx
+│   │   │   │   ├── messages/page.tsx
+│   │   │   │   ├── payments/page.tsx
+│   │   │   │   └── profile/page.tsx
+│   │   │   ├── hotel/
+│   │   │   │   ├── layout.tsx
 │   │   │   │   ├── page.tsx
-│   │   │   │   ├── owner/page.tsx
-│   │   │   │   └── hotel/page.tsx
-│   │   │   ├── forgot-password/page.tsx
-│   │   │   ├── reset-password/page.tsx
-│   │   │   └── verify-email/page.tsx
-│   │   ├── account/
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   │   ├── bookings/
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/page.tsx
-│   │   │   ├── appointments/
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/page.tsx
-│   │   │   ├── messages/
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── [conversationId]/page.tsx
-│   │   │   ├── payments/page.tsx
-│   │   │   ├── saved/page.tsx
-│   │   │   ├── notifications/page.tsx
-│   │   │   └── profile/page.tsx
-│   │   ├── owner/
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   │   ├── properties/
-│   │   │   │   ├── page.tsx
-│   │   │   │   ├── new/page.tsx
-│   │   │   │   └── [id]/edit/page.tsx
-│   │   │   ├── rentals/
-│   │   │   │   ├── page.tsx
-│   │   │   │   ├── new/page.tsx
-│   │   │   │   └── [id]/
-│   │   │   │       ├── availability/page.tsx
-│   │   │   │       └── pricing/page.tsx
-│   │   │   ├── messages/page.tsx
-│   │   │   ├── payments/page.tsx
-│   │   │   └── profile/page.tsx
-│   │   ├── hotel/
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   │   ├── rooms/
-│   │   │   │   ├── page.tsx
-│   │   │   │   ├── new/page.tsx
-│   │   │   │   └── [id]/edit/page.tsx
-│   │   │   ├── reservations/
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/page.tsx
-│   │   │   ├── messages/page.tsx
-│   │   │   ├── payments/page.tsx
-│   │   │   └── profile/page.tsx
-│   │   ├── admin/
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   │   ├── users/
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/page.tsx
-│   │   │   ├── listings/
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/review/page.tsx
-│   │   │   ├── rentals/page.tsx
-│   │   │   ├── hotels/
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── [id]/review/page.tsx
-│   │   │   ├── media/page.tsx
-│   │   │   ├── advertisements/page.tsx
-│   │   │   ├── transactions/page.tsx
-│   │   │   ├── reports/page.tsx
-│   │   │   └── settings/page.tsx
+│   │   │   │   ├── rooms/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── new/page.tsx
+│   │   │   │   │   └── [id]/edit/page.tsx
+│   │   │   │   ├── reservations/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [id]/page.tsx
+│   │   │   │   ├── messages/page.tsx
+│   │   │   │   ├── payments/page.tsx
+│   │   │   │   └── profile/page.tsx
+│   │   │   └── admin/
+│   │   │       ├── layout.tsx
+│   │   │       ├── page.tsx
+│   │   │       ├── users/
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── [id]/page.tsx
+│   │   │       ├── listings/
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── [id]/review/page.tsx
+│   │   │       ├── rentals/page.tsx
+│   │   │       ├── hotels/
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── [id]/review/page.tsx
+│   │   │       ├── media/page.tsx
+│   │   │       ├── advertisements/page.tsx
+│   │   │       ├── transactions/page.tsx
+│   │   │       ├── reports/page.tsx
+│   │   │       └── settings/page.tsx
 │   │   └── api/
 │   │       ├── session/
 │   │       │   ├── route.ts
@@ -266,7 +270,6 @@ annorent/
 ├── README.md
 ├── next.config.ts
 ├── tsconfig.json
-├── tailwind.config.ts
 ├── playwright.config.ts
 ├── vitest.config.ts
 ├── eslint.config.mjs
@@ -304,7 +307,7 @@ annorent/
 
 6. Files: `kebab-case.ts` / `kebab-case.tsx`. Route files keep Next.js's required
    names exactly (`page.tsx`, `layout.tsx`, `route.ts`, `error.tsx`,
-   `not-found.tsx`).
+   `not-found.tsx`, `proxy.ts`).
 7. Component default exports: `PascalCase`, matching the file's purpose, not
    necessarily the filename verbatim (`booking-flow.tsx` exports `BookingFlow`).
 8. One component per file. If a file grows a second exported component that isn't
@@ -312,32 +315,43 @@ annorent/
 9. Route group folders use parentheses exactly as shown — `(marketing)`,
    `(auth)` — and dynamic segments use brackets exactly as shown — `[id]`,
    `[conversationId]`.
+10. **`[locale]` is a reserved dynamic segment, not a content route.** Every
+    page-rendering route (marketing, auth, account, owner, hotel, admin) lives
+    under `src/app/[locale]/`, added now rather than deferred, per NFR-SC3
+    ("i18n architected in, not bolted on") — restructuring after more sections
+    are built would be far more expensive than doing it at this stage. `api/`
+    routes stay outside `[locale]/` since they aren't localized pages.
+    `proxy.ts` (Next.js 16's replacement for the deprecated `middleware.ts`
+    convention — see file-structure.md's boot exceptions in §3) now also
+    handles locale negotiation/redirect (cookie → `Accept-Language` → default
+    locale, redirecting an unprefixed request to its `/[locale]/...`
+    equivalent) in addition to the RBAC guards described in rule 12 below.
 
 ### Route rules
 
-10. `page.tsx` files are composition only — they assemble components from
+11. `page.tsx` files are composition only — they assemble components from
     `src/components/`, they don't contain business logic or large inline JSX
     trees. If a page file is getting long, that's a signal to extract a
     component, not a reason to keep growing the page file.
-11. `layout.tsx` at each role's root (`account/layout.tsx`, `owner/layout.tsx`,
+12. `layout.tsx` at each role's root (`account/layout.tsx`, `owner/layout.tsx`,
     `hotel/layout.tsx`, `admin/layout.tsx`) is where the RBAC guard for that role
     lives — every page under it inherits the guard; don't re-check the role
     inside individual `page.tsx` files.
-12. Every new route added to `src/app/` must be added to `context/sitemap.md` in
+13. Every new route added to `src/app/` must be added to `context/sitemap.md` in
     the same PR — the sitemap and the file tree describe the same thing from two
     angles and must never drift apart.
 
 ### Testing rules
 
-13. Unit/component tests are co-located as `*.test.ts` / `*.test.tsx` next to the
+14. Unit/component tests are co-located as `*.test.ts` / `*.test.tsx` next to the
     file they test — not gathered into a separate mirrored test tree.
-14. `e2e/` holds only cross-cutting, multi-page flows (auth+RBAC, full booking,
+15. `e2e/` holds only cross-cutting, multi-page flows (auth+RBAC, full booking,
     listing verification) — a single-component behavior test belongs co-located,
     not in `e2e/`.
 
 ### Barrel files / re-exports
 
-15. **No `index.ts` barrel re-export files**, except `lib/i18n/index.ts`
+16. **No `index.ts` barrel re-export files**, except `lib/i18n/index.ts`
     (which is a real module, not a re-export barrel). Explicit imports from the
     actual file keep import graphs traceable and avoid circular-import risk as
     the codebase grows — don't add a barrel "for convenience" in `components/ui/`
@@ -345,16 +359,70 @@ annorent/
 
 ### Empty folders
 
-16. Any folder that's intentionally empty at scaffold time gets a `.gitkeep` —
+17. Any folder that's intentionally empty at scaffold time gets a `.gitkeep` —
     remove the `.gitkeep` the moment a real file lands in that folder, don't leave
     both.
 
 ### Keeping this document current
 
-17. This file, `context/sitemap.md`, and `context/developer-map.md`'s "where to
+18. This file, `context/sitemap.md`, and `context/developer-map.md`'s "where to
     find what" table are the three places a structural change must be reflected.
     A PR that adds/moves/removes a route, a top-level component/lib folder, or a
     service boundary is incomplete without updating the relevant one(s) of these
     three — treat an out-of-date structure doc as a bug, not a documentation
     nice-to-have, since it's what opencode and new developers rely on to place
     new code correctly.
+
+---
+
+## 3. Boot & Next.js-required exceptions to "empty"
+
+"Structure-only" scaffolding still has to boot. A handful of files are exempt
+from the literal 0-byte rule because Next.js's own build system — not product
+content — requires something valid in them:
+
+- **`src/app/layout.tsx` is a minimal shell only** — `<html>`/`<body>` and
+  nothing else, no providers. **`src/app/[locale]/layout.tsx` is the real root
+  layout** — fonts, `I18nProvider`, `AuthProvider`, `ToastProvider`,
+  `SocketProvider`, and a `generateStaticParams()` returning the supported
+  locales, plus a locale-validity check that calls `notFound()` for anything
+  not in that list. `globals.css` (Tailwind entry + `@theme` brand tokens, see
+  `ui-context.md`) lives under `[locale]/` since it's loaded by that layout.
+  Keep both to the minimum needed to boot — never actual page content.
+- **Every other Next.js special file** (`page.tsx`, `layout.tsx` elsewhere,
+  `route.ts`, `error.tsx`, `not-found.tsx`, `proxy.ts`) needs a minimal
+  valid stub — a bare default export or handler, nothing else — because Next's
+  dev/build process requires one to recognize the route at all. E.g.
+  `export default function Page() { return null; }`. A true 0-byte file here
+  fails `next build` and errors the moment the route is visited in dev.
+- **`proxy.ts`, not `middleware.ts`.** Next.js 16 deprecated the `middleware`
+  file convention in favor of `proxy` (same location, `src/proxy.ts`). This
+  project uses `proxy.ts` from the start — if any generated code or an older
+  reference still creates `middleware.ts`, migrate it with
+  `npx @next/codemod@canary middleware-to-proxy .` and delete the old file
+  rather than letting both exist.
+- **Binary/auto-served assets** (`public/favicon.ico`,
+  `src/app/opengraph-image.png` + `.alt.txt`) are never faked as empty files.
+  Keep the real favicon `create-next-app` generated until a designed one
+  exists; don't create `opengraph-image.png` at all until the real asset is
+  ready — document the expected path, don't scaffold a broken placeholder.
+  `public/logo-mark.svg` / `logo-wordmark.svg` can stay genuinely empty since
+  nothing references or auto-serves them yet.
+- **`tailwind.config.ts` is not part of this project's tree.** Tailwind v4
+  (per `package.json`) uses CSS-first configuration — brand tokens live in the
+  `@theme` block inside `src/app/[locale]/globals.css`, not a separate config
+  file. If a future version needs a config file again (custom content globs,
+  plugins), add it back deliberately with real content, not as an empty
+  placeholder.
+- **`src/app/` vs. a root-level `app/`:** this project uses the `src/` layout,
+  exclusively. If a fresh `create-next-app` run (or a teammate's local setup)
+  ever regenerates a root-level `app/`, consolidate into `src/app/` and delete
+  the root one immediately — the two must never coexist.
+- **`tsconfig.json`'s `@/*` path alias** must point at `./src/*` for every
+  `@/...` import in this tree to resolve. This is a correction to a
+  misconfigured generated file, not new feature work — fix it directly; the
+  "don't touch create-next-app files" rule was never meant to protect an
+  incorrect setting.
+- **`package.json`** is intentionally not part of the scaffold target — it's
+  managed by `npm`/`create-next-app`/dependency changes, not hand-created
+  structure. It's omitted from the tree for that reason, not by oversight.

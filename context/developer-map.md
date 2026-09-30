@@ -40,8 +40,10 @@ working in.
 | What tables exist, how do they relate? | `database-schema.md` |
 | What's the auth model, RBAC rule, payment-security rule? | `security.md` |
 | How do I branch, test, deploy, and work with opencode? | `workflows.md` |
-| Where does a given file/component actually live in the web repo? | `annorent-web-file-structure.md` |
-| What routes exist and who can see them? | `docs/SITEMAP.md` |
+| Where does a given file/component actually live in the web repo? | `file-structure.md` |
+| What routes exist and who can see them, and what's designed vs. not yet? | `sitemap.md` |
+| Where do the brand colour/type tokens live, and how do I add one? | `src/app/[locale]/globals.css` — the `@theme` block |
+| Where does the home hero live? | `src/components/marketing/hero.tsx` (server), `search-bar.tsx` (the one client island), `trust-metrics.tsx` |
 
 ## Read order for a new developer or a fresh opencode session
 
@@ -52,7 +54,7 @@ working in.
 5. `security.md` — the non-negotiables.
 6. `code-standards.md` — how to actually write it.
 7. `ui-context.md` — for anything touching a screen.
-8. `annorent-web-file-structure.md` — for anything in the web repo specifically.
+8. `file-structure.md` — for anything in the web repo specifically.
 9. `workflows.md` — how to ship it.
 
 ## Non-negotiables worth repeating here
