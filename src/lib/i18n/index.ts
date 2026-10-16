@@ -11,16 +11,22 @@
  */
 
 import { auth, type AuthKey } from "./messages/auth";
+import { common, type CommonKey } from "./messages/common";
 import { marketing, type MarketingKey } from "./messages/marketing";
+import { owner, type OwnerKey } from "./messages/owner";
+import { admin, type AdminKey } from "./messages/admin";
 
-export const locales = ["en", "fr", "pt", "ar", "sw"] as const;
+export const locales = ["en", "fr", "pt", "sw"] as const;
 
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "en";
 
-/** Locales that require a right-to-left layout (ui-context.md, F11). */
-export const rtlLocales: readonly Locale[] = ["ar"];
+/**
+ * Locales that require a right-to-left layout (ui-context.md, F11).
+ * Empty for now: no RTL locale is shipped. Logged when one is added.
+ */
+export const rtlLocales: readonly Locale[] = [];
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
@@ -35,7 +41,6 @@ export const localeTags: Record<Locale, string> = {
   en: "en",
   fr: "fr",
   pt: "pt",
-  ar: "ar",
   sw: "sw",
 };
 
@@ -44,7 +49,6 @@ export const localeLabels: Record<Locale, string> = {
   en: "English",
   fr: "Français",
   pt: "Português",
-  ar: "العربية",
   sw: "Kiswahili",
 };
 
@@ -56,6 +60,9 @@ type PartialLocaleMessages = { [K in Locale]?: MessageTable };
 const messages = {
   auth: auth as unknown as PartialLocaleMessages,
   marketing: marketing as unknown as PartialLocaleMessages,
+  owner: owner as unknown as PartialLocaleMessages,
+  admin: admin as unknown as PartialLocaleMessages,
+  common: common as unknown as PartialLocaleMessages,
 } satisfies Record<string, PartialLocaleMessages>;
 
 export type Namespace = keyof typeof messages;
@@ -71,4 +78,4 @@ export function t(locale: Locale, namespace: Namespace, key: string): string {
   );
 }
 
-export type { AuthKey, MarketingKey };
+export type { AuthKey, CommonKey, MarketingKey, OwnerKey, AdminKey };
