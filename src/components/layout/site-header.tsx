@@ -63,7 +63,7 @@ export function SiteHeader({ locale, activeHref }: SiteHeaderProps) {
             aria-hidden="true"
             className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant"
           >
-            <span className="material-symbols-outlined text-[18px]">search</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-[18px]">search</span>
             <span className="font-label-md text-label-md">
               {t(locale, "marketing", "home.header.searchPlaceholder")}
             </span>
@@ -100,7 +100,7 @@ export function SiteHeader({ locale, activeHref }: SiteHeaderProps) {
             aria-hidden="true"
             className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant"
           >
-            <span className="material-symbols-outlined text-[16px]">language</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-[16px]">language</span>
             <span className="font-label-sm text-label-sm font-semibold">
               {locale.toUpperCase()}
             </span>
@@ -124,7 +124,7 @@ export function SiteHeader({ locale, activeHref }: SiteHeaderProps) {
             aria-hidden="true"
             className="flex w-8 h-8 items-center justify-center rounded-full bg-primary"
           >
-            <span className="material-symbols-outlined text-on-primary text-[18px]">
+            <span aria-hidden="true" className="material-symbols-outlined text-on-primary text-[18px]">
               person
             </span>
           </span>
