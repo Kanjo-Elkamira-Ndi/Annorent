@@ -1,5 +1,8 @@
 import type { Locale } from "@/lib/i18n";
 
+// `locale` is part of the section's API surface (threaded by the page and the
+// render test for the upcoming i18n pass); the copy here is still hard-coded.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function Transactions({ locale }: { locale: Locale }) {
   return (
     <div className="flex flex-col pb-16">

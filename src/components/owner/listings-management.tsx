@@ -92,6 +92,9 @@ function ListingCard({ listing, locale }: { listing: OwnerListing; locale: Local
     <div className="group rounded-2xl bg-surface-container-lowest p-4 shadow-sm transition-all duration-200 hover:shadow-md sm:p-5">
       <div className="flex flex-col gap-5 xl:flex-row xl:items-center">
         <div className="relative h-44 w-full shrink-0 overflow-hidden rounded-xl xl:h-36 xl:w-72">
+          {/* Dynamic cover inside a fixed-size tile with absolutely-positioned
+              overlay treatment; next/image's wrapper would break the overlay. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={listing.image}
             alt={listing.imageAlt}

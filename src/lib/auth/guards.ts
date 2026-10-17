@@ -33,7 +33,7 @@ export type Session = {
 
 export const MOCK_SESSION: Session = {
   userId: "user-owner-001",
-  role: "admin",
+  role: "property_owner",
   displayName: "Awa N'Guessan",
   isVerified: true,
 };

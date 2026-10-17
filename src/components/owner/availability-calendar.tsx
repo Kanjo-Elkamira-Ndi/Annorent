@@ -216,6 +216,9 @@ export function AvailabilityCalendar({ unitId }: { unitId?: string }) {
         <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
           <div className="flex min-w-0 items-center gap-3.5">
             <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-surface-container shadow-sm">
+              {/* Decorative thumbnail in a fixed-size tile with an absolutely
+                  positioned badge; next/image's wrapper would break the overlay. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/listings/properties-01.jpg"
                 alt=""
