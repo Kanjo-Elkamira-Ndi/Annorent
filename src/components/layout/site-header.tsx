@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { t, type Locale } from "@/lib/i18n";
@@ -6,29 +7,24 @@ import { cn } from "@/lib/utils/cn";
 /**
  * Public site header — the fixed bar above every marketing page.
  *
- * Owns: the brand lockup, primary navigation, the city search affordance, the
- * language/currency chip, and the sign-in / post-listing actions.
- * Does not own: the mobile drawer, the locale switcher behaviour, or the ⌘K
- * command palette — the design draws those controls but they are not wired yet,
- * and inventing handlers would be dead code.
- *
- * Server component. It renders no interactive widget of its own: the search
- * affordance and the currency chip are non-functional affordances in the
- * reference design, so they are rendered as inert elements rather than fake
- * buttons that do nothing when pressed.
- *
- * Fixed positioning means the page content must reserve its height. Stitch
- * does this with `pt-20` on the `<main>` wrapper plus `-mt-20` on the hero, so
- * the hero still bleeds to the very top of the viewport while everything below
- * it clears the bar.
+ * Owns: the brand lockup and the primary navigation for the public experience.
+ * The marketing page should be clean, low-noise, and focused on discoverability.
  */
 
-const NAV: ReadonlyArray<{ labelKey: string; href: string }> = [
-  { labelKey: "home.nav.buyRent", href: "/properties" },
-  { labelKey: "home.nav.flex", href: "/rentals" },
-  { labelKey: "home.nav.hotels", href: "/hotels" },
-  { labelKey: "home.nav.map", href: "/map" },
-];
+const RENTAL_DROPDOWN = [
+  { label: "Buy & Rent", href: "/properties" },
+  { label: "Flexible Rentals", href: "/rentals" },
+  { label: "Hotels & Residences", href: "/hotels" },
+  { label: "Map Discovery", href: "/map" },
+] as const;
+
+const PUBLIC_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Legal", href: "/legal/terms" },
+  { label: "Partners", href: "/partners" },
+] as const;
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -37,44 +33,76 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ locale, activeHref }: SiteHeaderProps) {
+  const dropdownActive = RENTAL_DROPDOWN.some((item) => activeHref === item.href);
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(4,27,60,0.06)]">
-      <div className="h-20 w-full max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between gap-gutter">
+    <header className="fixed top-0 z-50 w-full bg-surface-container-lowest/90 shadow-[0_1px_8px_rgba(4,27,60,0.06)] backdrop-blur-xl">
+      <div className="mx-auto flex h-20 w-full max-w-container-max items-center justify-between gap-gutter px-margin-mobile lg:px-margin-desktop">
         <div className="flex items-center gap-gutter">
-          <Link href={`/${locale}`} className="flex items-center gap-2">
-            <span className="flex w-9 h-9 items-center justify-center rounded-lg bg-primary">
-              <span aria-hidden="true" className="material-symbols-outlined text-on-primary text-[22px]">
-                apartment
-              </span>
-            </span>
-            <span className="flex flex-col">
-              <span className="font-headline-sm text-headline-sm text-primary tracking-tight">
+          <Link href={`/${locale}`} className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-primary/15 bg-surface-container-low shadow-sm">
+              <Image
+                src="/logo.jpg"
+                alt="Annorent logo"
+                width={44}
+                height={44}
+                priority
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="font-headline-sm text-headline-sm tracking-tight text-primary">
                 ANNORENT
               </span>
-              <span className="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant -mt-1">
-                {t(locale, "marketing", "home.header.tagline")}
-              </span>
-            </span>
+            </div>
           </Link>
-
-          {/* Drawn as a static affordance rather than a button: the command
-              palette it stands in for is not built yet. */}
-          <div
-            aria-hidden="true"
-            className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant"
-          >
-            <span aria-hidden="true" className="material-symbols-outlined text-[18px]">search</span>
-            <span className="font-label-md text-label-md">
-              {t(locale, "marketing", "home.header.searchPlaceholder")}
-            </span>
-            <kbd className="px-1.5 py-0.5 rounded bg-surface-container-lowest font-label-sm text-label-sm text-outline">
-              ⌘K
-            </kbd>
-          </div>
         </div>
 
-        <nav aria-label={t(locale, "marketing", "home.nav.label")} className="hidden lg:flex items-center gap-1 xl:gap-2">
-          {NAV.map((item) => {
+        <nav
+          aria-label={t(locale, "marketing", "home.nav.label")}
+          className="hidden items-center gap-2 lg:flex"
+        >
+          <div className="group relative">
+            <button
+              type="button"
+              className={cn(
+                "flex items-center gap-1.5 rounded-lg px-3 py-2 font-label-md text-label-md transition-colors",
+                dropdownActive
+                  ? "bg-primary-container text-on-primary font-bold"
+                  : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface",
+              )}
+            >
+              <span>Available Rentals</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-[18px]">
+                expand_more
+              </span>
+            </button>
+
+            <div className="invisible absolute left-0 top-full z-20 mt-2 min-w-[220px] translate-y-1 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+              <div className="overflow-hidden rounded-xl border border-outline-variant/70 bg-surface-container-lowest shadow-[0_12px_30px_rgba(15,23,42,0.12)]">
+                {RENTAL_DROPDOWN.map((item) => {
+                  const isActive = activeHref === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={`/${locale}${item.href}`}
+                      aria-current={isActive ? "page" : undefined}
+                      className={cn(
+                        "flex items-center justify-between px-3.5 py-2.5 text-sm transition-colors",
+                        isActive
+                          ? "bg-primary-container text-on-primary"
+                          : "text-on-surface hover:bg-surface-container hover:text-on-surface",
+                      )}
+                    >
+                      <span>{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {PUBLIC_LINKS.map((item) => {
             const isActive = activeHref === item.href;
             return (
               <Link
@@ -82,52 +110,25 @@ export function SiteHeader({ locale, activeHref }: SiteHeaderProps) {
                 href={`/${locale}${item.href}`}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "px-3 py-2 rounded-lg font-label-md text-label-md transition-colors",
+                  "rounded-lg px-3 py-2 font-label-md text-label-md transition-colors",
                   isActive
                     ? "bg-primary-container text-on-primary font-bold"
                     : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface",
                 )}
               >
-                {t(locale, "marketing", item.labelKey)}
+                {item.label}
               </Link>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* Language/currency chip: display-only until the switchers exist. */}
-          <div
-            aria-hidden="true"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant"
-          >
-            <span aria-hidden="true" className="material-symbols-outlined text-[16px]">language</span>
-            <span className="font-label-sm text-label-sm font-semibold">
-              {locale.toUpperCase()}
-            </span>
-            <span className="text-outline-variant">|</span>
-            <span className="font-label-sm text-label-sm">FCFA</span>
-          </div>
-
           <Link
             href={`/${locale}/login`}
-            className="hidden md:inline-flex font-label-md text-label-md text-on-surface-variant hover:text-primary px-3 py-2 transition-colors"
+            className="inline-flex items-center justify-center rounded-lg px-3 py-2 font-label-md text-label-md text-on-surface-variant transition-colors hover:text-primary"
           >
             {t(locale, "marketing", "home.header.login")}
           </Link>
-          <Link
-            href={`/${locale}/register/owner`}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:bg-primary-container hover:text-on-primary transition-all"
-          >
-            {t(locale, "marketing", "home.header.postListing")}
-          </Link>
-          <span
-            aria-hidden="true"
-            className="flex w-8 h-8 items-center justify-center rounded-full bg-primary"
-          >
-            <span aria-hidden="true" className="material-symbols-outlined text-on-primary text-[18px]">
-              person
-            </span>
-          </span>
         </div>
       </div>
     </header>

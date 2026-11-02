@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Local design reference screenshots (working files, not shipped)
 /images/
+# specs
+frontend-implementation-plan.md
+class-diagram.md
