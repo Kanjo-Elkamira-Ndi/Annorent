@@ -1,81 +1,69 @@
 /**
  * Locale registry and message lookup.
  *
- * Owns: the supported-locale list, per-locale direction, and the typed
- * `t()` lookup used by server and client components.
- * Does not own: translation authoring (that lives in `messages/*.ts`).
+ * Owns: the supported-locale list (English and French, decision D-1), locale
+ * tags for `Intl`, and the typed `t()` lookup used by server and client
+ * components.
+ * Does not own: translation authoring (`messages/*.ts`).
  *
- * This is the one permitted barrel-style module in the project — see
- * `context/file-structure.md` rule 16, which exempts `lib/i18n/index.ts`
- * because it is a real module rather than a re-export shim.
+ * This is the one permitted barrel-style module in the project: it is a real
+ * module, not a re-export shim.
  */
 
-import { auth, type AuthKey } from "./messages/auth";
-import { common, type CommonKey } from "./messages/common";
-import { marketing, type MarketingKey } from "./messages/marketing";
-import { owner, type OwnerKey } from "./messages/owner";
-import { admin, type AdminKey } from "./messages/admin";
+import { common } from "./messages/common";
 
-export const locales = ["en", "fr", "pt", "sw"] as const;
+export const locales = ["en", "fr"] as const;
 
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "en";
 
-/**
- * Locales that require a right-to-left layout (ui-context.md, F11).
- * Empty for now: no RTL locale is shipped. Logged when one is added.
- */
-export const rtlLocales: readonly Locale[] = [];
-
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
 
-export function dirFor(locale: Locale): "ltr" | "rtl" {
-  return rtlLocales.includes(locale) ? "rtl" : "ltr";
-}
-
-/** BCP 47 tags for `<html lang>` and `Intl` formatting. */
+/**
+ * BCP 47 tags for `Intl` formatting. The Cameroonian regional tags give FCFA
+ * currency labels and day-first dates (verified with Node's ICU: "350 000 FCFA",
+ * "04/03/2026"). `<html lang>` uses the bare language code.
+ */
 export const localeTags: Record<Locale, string> = {
-  en: "en",
-  fr: "fr",
-  pt: "pt",
-  sw: "sw",
+  en: "en-CM",
+  fr: "fr-CM",
 };
 
-/** Endonyms — a language switcher reads in its own language. */
+/** Endonyms: a language switcher reads in its own language. */
 export const localeLabels: Record<Locale, string> = {
   en: "English",
   fr: "Français",
-  pt: "Português",
-  sw: "Kiswahili",
 };
 
-type MessageTable = Record<string, string>;
+export const catalogs = { common } as const;
 
-/** A namespace may ship fewer locales than the app supports; `t()` falls back. */
-type PartialLocaleMessages = { [K in Locale]?: MessageTable };
-
-const messages = {
-  auth: auth as unknown as PartialLocaleMessages,
-  marketing: marketing as unknown as PartialLocaleMessages,
-  owner: owner as unknown as PartialLocaleMessages,
-  admin: admin as unknown as PartialLocaleMessages,
-  common: common as unknown as PartialLocaleMessages,
-} satisfies Record<string, PartialLocaleMessages>;
-
-export type Namespace = keyof typeof messages;
+export type Namespace = keyof typeof catalogs;
+export type MessageKey<N extends Namespace> = keyof (typeof catalogs)[N]["en"] & string;
 
 /**
- * Look up a message. Falls back to English, then to the key itself, so a
- * missing translation is visible in the UI rather than rendering as `undefined`.
+ * Look up a message, then fill `{name}` placeholders from `values`.
+ * Falls back to English, then to the key, so a gap is visible instead of blank.
  */
-export function t(locale: Locale, namespace: Namespace, key: string): string {
-  const tables = messages[namespace];
-  return (
-    tables[locale]?.[key] ?? tables[defaultLocale]?.[key] ?? key
+export function t<N extends Namespace>(
+  locale: Locale,
+  namespace: N,
+  key: MessageKey<N>,
+  values?: Record<string, string | number>,
+): string {
+  const tables = catalogs[namespace] as Record<Locale, Record<string, string>>;
+  const template = tables[locale]?.[key] ?? tables[defaultLocale]?.[key] ?? key;
+  if (!values) return template;
+  return template.replace(/\{(\w+)\}/g, (match, name: string) =>
+    name in values ? String(values[name]) : match,
   );
 }
 
-export type { AuthKey, CommonKey, MarketingKey, OwnerKey, AdminKey };
+/** Swap the locale segment of a path: `/en/hotels` → `/fr/hotels`. */
+export function switchLocalePath(pathname: string, target: Locale): string {
+  const [, first, ...rest] = pathname.split("/");
+  if (first && isLocale(first)) return `/${[target, ...rest].join("/")}`.replace(/\/$/, "") || `/${target}`;
+  return `/${target}${pathname === "/" ? "" : pathname}`;
+}

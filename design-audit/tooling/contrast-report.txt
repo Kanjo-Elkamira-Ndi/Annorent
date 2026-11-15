@@ -1,0 +1,82 @@
+--- Existing / documented colours
+PASS  6.08:1 (need 4.5)  white on logo blue  #FFFFFF on #024BFF
+PASS  6.08:1 (need 4.5)  logo blue text on white  #024BFF on #FFFFFF
+PASS  6.82:1 (need 4.5)  white on documented primary  #FFFFFF on #0052CC
+FAIL  2.67:1 (need 4.5)  documented tertiary green text on white  #36B373 on #FFFFFF
+PASS 12.93:1 (need 4.5)  documented neutral text on secondary  #172B4D on #F4F5F7
+PASS  5.58:1 (need 4.5)  logo blue on secondary  #024BFF on #F4F5F7
+--- Recommended direction: light theme
+PASS 14.10:1 (need 4.5)  ink on surface  #172B4D on #FFFFFF
+PASS  7.65:1 (need 4.5)  ink2 on surface  #44546F on #FFFFFF
+PASS  5.31:1 (need 4.5)  muted on surface  #5E6C84 on #FFFFFF
+PASS  7.47:1 (need 4.5)  actionText on surface  #0040E0 on #FFFFFF
+PASS 12.93:1 (need 4.5)  ink on canvas  #172B4D on #F4F5F7
+PASS  7.02:1 (need 4.5)  ink2 on canvas  #44546F on #F4F5F7
+PASS  4.87:1 (need 4.5)  muted on canvas  #5E6C84 on #F4F5F7
+PASS  6.85:1 (need 4.5)  actionText on canvas  #0040E0 on #F4F5F7
+PASS 12.14:1 (need 4.5)  ink on sunken  #172B4D on #ECEEF2
+PASS  6.59:1 (need 4.5)  ink2 on sunken  #44546F on #ECEEF2
+PASS  4.57:1 (need 4.5)  muted on sunken  #5E6C84 on #ECEEF2
+PASS  6.43:1 (need 4.5)  actionText on sunken  #0040E0 on #ECEEF2
+PASS  6.08:1 (need 4.5)  white on action  #FFFFFF on #024BFF
+PASS  8.25:1 (need 4.5)  white on actionHover  #FFFFFF on #003BD1
+PASS  4.69:1 (need 4.5)  success text on successBg  #1C7A4F on #E6F4EC
+PASS  5.37:1 (need 4.5)  pending on pendingBg  #8A5A00 on #FDF3DC
+PASS  4.90:1 (need 4.5)  danger on dangerBg  #C42B1C on #FCEBE8
+PASS  5.66:1 (need 4.5)  danger on surface  #C42B1C on #FFFFFF
+PASS  5.93:1 (need 4.5)  locked on surface  #5F6470 on #FFFFFF
+PASS  9.04:1 (need 4.5)  ink on featured fill  #172B4D on #FFC72C
+PASS  3.10:1 (need 3)  borderStrong (input edge) vs surface  #8993A4 on #FFFFFF
+PASS  6.08:1 (need 3)  focus ring vs surface  #024BFF on #FFFFFF
+PASS  5.58:1 (need 3)  focus ring vs canvas  #024BFF on #F4F5F7
+PASS 14.10:1 (need 4.5)  white on ink (dark band)  #FFFFFF on #172B4D
+--- Recommended direction: dark theme
+PASS 15.70:1 (need 4.5)  ink on canvas  #E9EDF5 on #0B1424
+PASS  9.83:1 (need 4.5)  ink2 on canvas  #B3BED1 on #0B1424
+PASS  6.49:1 (need 4.5)  muted on canvas  #8E9AB0 on #0B1424
+PASS  8.57:1 (need 4.5)  actionText on canvas  #8CB0FF on #0B1424
+PASS  8.95:1 (need 4.5)  success on canvas  #5CC98F on #0B1424
+PASS 10.29:1 (need 4.5)  pending on canvas  #F2B84B on #0B1424
+PASS  8.04:1 (need 4.5)  danger on canvas  #FF8A7A on #0B1424
+PASS 14.35:1 (need 4.5)  ink on surface  #E9EDF5 on #111D33
+PASS  8.98:1 (need 4.5)  ink2 on surface  #B3BED1 on #111D33
+PASS  5.93:1 (need 4.5)  muted on surface  #8E9AB0 on #111D33
+PASS  7.83:1 (need 4.5)  actionText on surface  #8CB0FF on #111D33
+PASS  8.18:1 (need 4.5)  success on surface  #5CC98F on #111D33
+PASS  9.41:1 (need 4.5)  pending on surface  #F2B84B on #111D33
+PASS  7.35:1 (need 4.5)  danger on surface  #FF8A7A on #111D33
+PASS 12.90:1 (need 4.5)  ink on raised  #E9EDF5 on #18263F
+PASS  8.07:1 (need 4.5)  ink2 on raised  #B3BED1 on #18263F
+PASS  5.33:1 (need 4.5)  muted on raised  #8E9AB0 on #18263F
+PASS  7.04:1 (need 4.5)  actionText on raised  #8CB0FF on #18263F
+PASS  7.35:1 (need 4.5)  success on raised  #5CC98F on #18263F
+PASS  8.45:1 (need 4.5)  pending on raised  #F2B84B on #18263F
+PASS  6.61:1 (need 4.5)  danger on raised  #FF8A7A on #18263F
+PASS  6.08:1 (need 4.5)  white on action (dark)  #FFFFFF on #024BFF
+PASS  3.12:1 (need 3)  borderStrong vs surface (dark)  #5B6B87 on #111D33
+PASS  8.57:1 (need 3)  focus vs canvas (dark)  #8CB0FF on #0B1424
+PASS 15.15:1 (need 4.5)  ink on sunken (dark #0E1829)  #E9EDF5 on #0E1829
+PASS  9.48:1 (need 4.5)  ink2 on sunken (dark #0E1829)  #B3BED1 on #0E1829
+PASS  6.26:1 (need 4.5)  muted on sunken (dark #0E1829)  #8E9AB0 on #0E1829
+PASS  8.27:1 (need 4.5)  actionText on sunken (dark #0E1829)  #8CB0FF on #0E1829
+--- Alternative directions, key pairs
+PASS 15.28:1 (need 4.5)  D1 ink on paper  #14213D on #FAFAF7
+PASS  4.81:1 (need 4.5)  D1 brass accent text  #8A6A2B on #FAFAF7
+PASS 11.37:1 (need 4.5)  D3 ink on taxi yellow  #111827 on #FFC72C
+FAIL  1.56:1 (need 4.5)  D3 white on taxi yellow  #FFFFFF on #FFC72C
+PASS 15.76:1 (need 4.5)  D3 basalt text on white  #1F2421 on #FFFFFF
+--- Phase 1 additions: tinted badge/alert backgrounds and nav active state
+PASS 12.69:1 (need 4.5)  light: ink on action-subtle (active nav, info alert)  #172B4D on #EEF3FF
+PASS  6.89:1 (need 4.5)  light: secondary on action-subtle  #44546F on #EEF3FF
+PASS  5.10:1 (need 4.5)  light: locked on locked-bg  #5F6470 on #ECEEF2
+PASS  6.95:1 (need 4.5)  dark: success on success-bg  #5CC98F on #12301F
+PASS  8.54:1 (need 4.5)  dark: pending on pending-bg  #F2B84B on #2E240C
+PASS  6.99:1 (need 4.5)  dark: danger on danger-bg  #FF8A7A on #3A1714
+PASS  8.07:1 (need 4.5)  dark: locked on locked-bg  #B3BED1 on #18263F
+PASS 12.90:1 (need 4.5)  dark: ink on action-subtle  #E9EDF5 on #18263F
+PASS  7.63:1 (need 4.5)  dark: secondary on alert tints (worst: success-bg)  #B3BED1 on #12301F
+PASS  8.54:1 (need 4.5)  dark: secondary on danger-bg  #B3BED1 on #3A1714
+PASS  8.04:1 (need 4.5)  dark: canvas text on danger fill (destructive button)  #0B1424 on #FF8A7A
+PASS  5.66:1 (need 4.5)  light: white on danger fill (destructive button)  #FFFFFF on #C42B1C
+PASS  7.04:1 (need 4.5)  dark: link on surface (bottom nav active)  #8CB0FF on #18263F
+PASS  7.47:1 (need 4.5)  light: link on surface (bottom nav active)  #0040E0 on #FFFFFF

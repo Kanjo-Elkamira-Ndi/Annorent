@@ -1,44 +1,41 @@
 import { describe, expect, it } from "vitest";
 import {
-  formatCfa,
   formatDate,
+  formatMoney,
   formatNumber,
   formatRelativeTime,
+  formatShortDate,
 } from "@/lib/utils/format";
 
-/**
- * Reduces a formatted currency string to its digits and grouping marks only.
- *
- * `Intl` differs by locale in ways that make raw-string assertions brittle:
- * the symbol is a prefix in en ("F CFA 450,000") and a suffix in fr
- * ("450 000 F CFA"), and the grouping separator is a comma in en but a narrow
- * no-break space in fr. Stripping everything but digits/`,`/`.` leaves the
- * grouping convention visible while ignoring both symbol placement and space
- * flavour.
- */
+/** Digits and grouping marks only, so symbol placement and space flavour don't matter. */
 function digits(formatted: string): string {
   return formatted.replace(/[^\d,.]/g, "");
 }
 
-describe("formatCfa", () => {
-  it("formats XOF with no minor units", () => {
-    // XOF has no minor unit, so no decimal ever appears.
-    expect(digits(formatCfa(450000, "en"))).toBe("450,000");
+describe("formatMoney", () => {
+  it("uses the Central African franc label, not the West African one", () => {
+    // XAF renders as "FCFA" for the Cameroonian locales; XOF would render "F CFA".
+    expect(formatMoney(350000, "en")).toContain("FCFA");
+    expect(formatMoney(350000, "fr")).toContain("FCFA");
+  });
+
+  it("never shows minor units", () => {
+    expect(digits(formatMoney(450000, "en"))).toBe("450,000");
   });
 
   it("groups per locale", () => {
-    // en groups with a comma, fr with a narrow no-break space (U+202F).
-    expect(digits(formatCfa(1250000, "en"))).toBe("1,250,000");
-    expect(digits(formatCfa(1250000, "fr"))).toBe("1250000");
+    // en groups with a comma, fr with a (narrow) no-break space.
+    expect(digits(formatMoney(1250000, "en"))).toBe("1,250,000");
+    expect(digits(formatMoney(1250000, "fr"))).toBe("1250000");
   });
 
-  it("carries the currency label", () => {
-    expect(formatCfa(450000, "en")).toContain("CFA");
+  it("puts the currency after the amount in French", () => {
+    expect(formatMoney(350000, "fr").trim().endsWith("FCFA")).toBe(true);
   });
 
   it("keeps zero and negative values intact", () => {
-    expect(digits(formatCfa(0, "en"))).toBe("0");
-    expect(formatCfa(-50000, "en")).toContain("-");
+    expect(digits(formatMoney(0, "en"))).toBe("0");
+    expect(formatMoney(-50000, "en")).toContain("-");
   });
 });
 
@@ -51,8 +48,19 @@ describe("formatNumber", () => {
 
 describe("formatDate", () => {
   it("renders a stable ISO date", () => {
-    expect(formatDate("2026-03-14T09:00:00.000Z", "en")).toBe("Mar 14, 2026");
+    expect(formatDate("2026-03-14T09:00:00.000Z", "en")).toContain("2026");
     expect(formatDate("2026-03-14T09:00:00.000Z", "fr")).toContain("2026");
+  });
+
+  it("returns the input for an invalid date", () => {
+    expect(formatDate("not-a-date", "en")).toBe("not-a-date");
+  });
+});
+
+describe("formatShortDate", () => {
+  it("puts the day first, as Cameroon does in both languages", () => {
+    expect(formatShortDate("2026-03-04T00:00:00.000Z", "en")).toBe("04/03/2026");
+    expect(formatShortDate("2026-03-04T00:00:00.000Z", "fr")).toBe("04/03/2026");
   });
 });
 

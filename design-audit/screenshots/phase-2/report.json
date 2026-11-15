@@ -1,0 +1,1129 @@
+[
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/en",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Find your next place in Cameroon",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/fr",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Trouvez votre prochain lieu au Cameroun",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/en/hotels",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Hotels aren't available yet",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/fr/properties",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Les annonces ne sont pas encore disponibles",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/en/saved",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Sign in to see saved places",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/en/design-preview",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Design preview",
+    "obscured": [
+      "Skip to main content",
+      "TEXTAREA",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/en/no-such-page",
+    "status": 404,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "We can't find that page",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/en",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Find your next place in Cameroon",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/fr",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Trouvez votre prochain lieu au Cameroun",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/en/hotels",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Hotels aren't available yet",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/fr/properties",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Les annonces ne sont pas encore disponibles",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/en/saved",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Sign in to see saved places",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/en/design-preview",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Design preview",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/en/no-such-page",
+    "status": 404,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "We can't find that page",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/en",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Find your next place in Cameroon",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/fr",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Trouvez votre prochain lieu au Cameroun",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/en/hotels",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Hotels aren't available yet",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/fr/properties",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Les annonces ne sont pas encore disponibles",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/en/saved",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Sign in to see saved places",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/en/design-preview",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Design preview",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/en/no-such-page",
+    "status": 404,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "We can't find that page",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 360,
+    "route": "/en",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Find your next place in Cameroon",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 360,
+    "route": "/fr",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Trouvez votre prochain lieu au Cameroun",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 360,
+    "route": "/en/hotels",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Hotels aren't available yet",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 360,
+    "route": "/fr/properties",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Les annonces ne sont pas encore disponibles",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 360,
+    "route": "/en/saved",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Sign in to see saved places",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 360,
+    "route": "/en/design-preview",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "Design preview",
+    "obscured": [
+      "Skip to main content",
+      "TEXTAREA",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 360,
+    "route": "/en/no-such-page",
+    "status": 404,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 12,
+      "y": 12,
+      "width": 336,
+      "height": 48,
+      "top": 12,
+      "right": 348,
+      "bottom": 60,
+      "left": 12
+    },
+    "bottomNav": true,
+    "h1": "We can't find that page",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "route": "/en",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Find your next place in Cameroon",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "route": "/fr",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Trouvez votre prochain lieu au Cameroun",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "route": "/en/hotels",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Hotels aren't available yet",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "route": "/fr/properties",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Les annonces ne sont pas encore disponibles",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "route": "/en/saved",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Sign in to see saved places",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 768,
+    "route": "/en/design-preview",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "Design preview",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 768,
+    "route": "/en/no-such-page",
+    "status": 404,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 24,
+      "y": 12,
+      "width": 720,
+      "height": 56,
+      "top": 12,
+      "right": 744,
+      "bottom": 68,
+      "left": 24
+    },
+    "bottomNav": false,
+    "h1": "We can't find that page",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/en",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Find your next place in Cameroon",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/fr",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Trouvez votre prochain lieu au Cameroun",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/en/hotels",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Hotels aren't available yet",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/fr/properties",
+    "status": 200,
+    "lang": "fr",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Les annonces ne sont pas encore disponibles",
+    "obscured": [
+      "Aller au contenu principal",
+      "Aller au contenu principal",
+      "Aller au contenu principal"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/en/saved",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Sign in to see saved places",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/en/design-preview",
+    "status": 200,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "Design preview",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": []
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/en/no-such-page",
+    "status": 404,
+    "lang": "en",
+    "overflowX": false,
+    "pill": {
+      "x": 120,
+      "y": 16,
+      "width": 1200,
+      "height": 56,
+      "top": 16,
+      "right": 1320,
+      "bottom": 72,
+      "left": 120
+    },
+    "bottomNav": false,
+    "h1": "We can't find that page",
+    "obscured": [
+      "Skip to main content",
+      "Skip to main content",
+      "Skip to main content"
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "check": "menu-sheet",
+    "dialogOpen": true,
+    "focusEscaped": true,
+    "closedOnEsc": true
+  },
+  {
+    "check": "language-switch",
+    "url": "http://localhost:3400/fr/hotels",
+    "lang": "fr"
+  },
+  {
+    "check": "theme-persist",
+    "theme": "dark"
+  }
+]

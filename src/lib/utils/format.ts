@@ -1,30 +1,30 @@
 import { defaultLocale, localeTags, type Locale } from "@/lib/i18n";
 
 /**
- * Display formatters for the owner's surfaces.
+ * Display formatters.
  *
- * Owns: turning stored numbers and ISO strings into locale-aware display text —
- * West/Central African CFA franc amounts, plain counts, calendar dates, and
- * relative times.
- * Does not own: any network call, any currency conversion, or rate logic. These
- * are pure display helpers; the money *arithmetic* lives with the domain that
- * owns it (see `context/code-standards.md` — no business logic in the render
- * layer), and the raw integer amounts stay the single source of truth.
+ * Owns: turning stored numbers and ISO strings into locale-aware display text:
+ * money, plain counts, calendar dates and relative times.
+ * Does not own: currency conversion, rate logic or any network call. Amounts
+ * stay integers in their currency's major unit; these helpers only render them.
  *
- * `now` is a parameter on the relative formatter rather than read from the clock
- * so that callers and tests are deterministic.
+ * Cameroon uses the Central African CFA franc, `XAF` (BEAC), not the West
+ * African `XOF`. Both have no minor unit. `now` is a parameter on the relative
+ * formatter so callers and tests are deterministic.
  */
+
+export type CurrencyCode = "XAF";
 
 function tag(locale: Locale): string {
   return localeTags[locale] ?? localeTags[defaultLocale];
 }
 
-export function formatCfa(value: number, locale: Locale): string {
+export function formatMoney(amount: number, locale: Locale, currency: CurrencyCode = "XAF"): string {
   return new Intl.NumberFormat(tag(locale), {
     style: "currency",
-    currency: "XOF",
+    currency,
     maximumFractionDigits: 0,
-  }).format(value);
+  }).format(amount);
 }
 
 export function formatNumber(value: number, locale: Locale): string {
@@ -40,6 +40,13 @@ export function formatDate(iso: string, locale: Locale): string {
     day: "numeric",
     timeZone: "UTC",
   }).format(date);
+}
+
+/** Numeric day-first date, e.g. 04/03/2026, for forms and tables. */
+export function formatShortDate(iso: string, locale: Locale): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat(tag(locale), { dateStyle: "short", timeZone: "UTC" }).format(date);
 }
 
 const RELATIVE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
